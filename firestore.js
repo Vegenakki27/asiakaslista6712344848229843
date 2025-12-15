@@ -1,4 +1,3 @@
-// 🔹 Firebase SDK:t CDN:stä (PAKOLLINEN GitHub Pagesissa)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getFirestore,
@@ -7,6 +6,10 @@ import {
   getDocs,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+
+
+console.log("Firebase CDN module toimii");
 
 // 🔹 SINUN FIREBASE CONFIG (sellaisenaan)
 const firebaseConfig = {
@@ -17,6 +20,7 @@ const firebaseConfig = {
   messagingSenderId: "387301231524",
   appId: "1:387301231524:web:5f9faa071c51c5b9a1cf31"
 };
+
 
 // 🔹 Alusta Firebase
 const app = initializeApp(firebaseConfig);
