@@ -1,5 +1,5 @@
 body {
-  background: #0f172a;
+  background: #222323;
   color: #e5e7eb;
   font-family: system-ui, sans-serif;
   padding: 20px;
@@ -29,7 +29,7 @@ input, button {
 }
 
 button {
-  background: #2563eb;
+  background: #c00000;
   color: white;
   cursor: pointer;
 }
