@@ -1,22 +1,53 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// 🔹 Firebase SDK:t CDN:stä (PAKOLLINEN GitHub Pagesissa)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// 🔹 SINUN FIREBASE CONFIG (sellaisenaan)
 const firebaseConfig = {
   apiKey: "AIzaSyDxe19JvYyhtVfplp3A5DPNmxmojBX0LlU",
   authDomain: "lista1-517d0.firebaseapp.com",
-  databaseURL: "https://lista1-517d0-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "lista1-517d0",
   storageBucket: "lista1-517d0.firebasestorage.app",
   messagingSenderId: "387301231524",
-  appId: "1:387301231524:web:5f9faa071c51c5b9a1cf31",
-  measurementId: "G-89KKHH5JBB"
+  appId: "1:387301231524:web:5f9faa071c51c5b9a1cf31"
 };
 
-// Initialize Firebase
+// 🔹 Alusta Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+// 🔹 Firestore-instanssi
+const db = getFirestore(app);
+
+// 🔹 HTML-elementit (testiä varten)
+const saveBtn = document.getElementById("saveBtn");
+const loadBtn = document.getElementById("loadBtn");
+const output = document.getElementById("output");
+
+// 🔹 Tallenna testidata Firestoreen
+saveBtn.addEventListener("click", async () => {
+  try {
+    await addDoc(collection(db, "test"), {
+      message: "Firestore toimii!",
+      createdAt: serverTimestamp()
+    });
+    output.textContent = "Tallennus onnistui ✅";
+  } catch (err) {
+    output.textContent = "Virhe tallennuksessa ❌\n" + err;
+  }
+});
+
+// 🔹 Lataa data Firestoresta
+loadBtn.addEventListener("click", async () => {
+  output.textContent = "";
+  const snapshot = await getDocs(collection(db, "test"));
+
+  snapshot.forEach(doc => {
+    output.textContent += JSON.stringify(doc.data(), null, 2) + "\n\n";
+  });
+});
