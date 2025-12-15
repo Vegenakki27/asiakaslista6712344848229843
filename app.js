@@ -1,14 +1,23 @@
-import { db, collection, addDoc, onSnapshot, serverTimestamp } from "./firestore.js";
+import { db } from "./firestore.js";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 const list = document.getElementById("list");
 const nameInput = document.getElementById("nameInput");
 const search = document.getElementById("search");
+const generateBtn = document.getElementById("generateBtn");
 
+// Salasanan generointi
 function generatePassword() {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
-document.getElementById("generateBtn").addEventListener("click", async () => {
+// Lisää Firestoreen
+generateBtn.addEventListener("click", async () => {
   const name = nameInput.value.trim();
   if (!name) return;
 
@@ -21,6 +30,7 @@ document.getElementById("generateBtn").addEventListener("click", async () => {
   nameInput.value = "";
 });
 
+// Reaaliaikainen lista
 onSnapshot(collection(db, "tickets"), snapshot => {
   list.innerHTML = "";
 
@@ -32,6 +42,7 @@ onSnapshot(collection(db, "tickets"), snapshot => {
   });
 });
 
+// Haku
 search.addEventListener("input", () => {
   const term = search.value.toLowerCase();
   [...list.children].forEach(row => {
@@ -39,4 +50,5 @@ search.addEventListener("input", () => {
       ? ""
       : "none";
   });
-});
+}
+);
