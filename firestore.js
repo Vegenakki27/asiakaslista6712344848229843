@@ -3,15 +3,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
+  onSnapshot,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-
-
-console.log("Firebase CDN module toimii");
-
-// 🔹 SINUN FIREBASE CONFIG (sellaisenaan)
 const firebaseConfig = {
   apiKey: "AIzaSyDxe19JvYyhtVfplp3A5DPNmxmojBX0LlU",
   authDomain: "lista1-517d0.firebaseapp.com",
@@ -21,37 +16,6 @@ const firebaseConfig = {
   appId: "1:387301231524:web:5f9faa071c51c5b9a1cf31"
 };
 
-
-// 🔹 Alusta Firebase
 const app = initializeApp(firebaseConfig);
-
-// 🔹 Firestore-instanssi
-const db = getFirestore(app);
-
-// 🔹 HTML-elementit (testiä varten)
-const saveBtn = document.getElementById("saveBtn");
-const loadBtn = document.getElementById("loadBtn");
-const output = document.getElementById("output");
-
-// 🔹 Tallenna testidata Firestoreen
-saveBtn.addEventListener("click", async () => {
-  try {
-    await addDoc(collection(db, "test"), {
-      message: "Firestore toimii!",
-      createdAt: serverTimestamp()
-    });
-    output.textContent = "Tallennus onnistui ✅";
-  } catch (err) {
-    output.textContent = "Virhe tallennuksessa ❌\n" + err;
-  }
-});
-
-// 🔹 Lataa data Firestoresta
-loadBtn.addEventListener("click", async () => {
-  output.textContent = "";
-  const snapshot = await getDocs(collection(db, "test"));
-
-  snapshot.forEach(doc => {
-    output.textContent += JSON.stringify(doc.data(), null, 2) + "\n\n";
-  });
-});
+export const db = getFirestore(app);
+export { collection, addDoc, onSnapshot, serverTimestamp };

@@ -3,17 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firestore Testi</title>
+  <title>Hallinta</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Firestore testi</h1>
+<h1>Salasanat</h1>
 
-<button id="saveBtn">Tallenna testidata</button>
-<button id="loadBtn">Lataa data</button>
+<div class="controls">
+  <input type="text" id="nameInput" placeholder="Nimi">
+  <button id="generateBtn">Generoi salasana</button>
+</div>
 
-<pre id="output"></pre>
+<input type="text" id="search" placeholder="Hae nimellä tai salasanalla">
+
+<table>
+  <thead>
+    <tr>
+      <th>Nimi</th>
+      <th>Salasana</th>
+    </tr>
+  </thead>
+  <tbody id="list"></tbody>
+</table>
 
 <script type="module" src="firestore.js"></script>
+<script type="module" src="app.js"></script>
+
+<script>
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
 </body>
 </html>
