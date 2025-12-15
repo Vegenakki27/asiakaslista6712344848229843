@@ -1,47 +1,19 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<link rel="icon" href="favicon.png" type="image/png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hallinta</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firestore Testi</title>
 </head>
 <body>
-  <div class="container">
-    <h1>VSystem | Käyttäjät</h1>
 
-    <button class="btn" onclick="openModal()">+ Generoi salasana</button>
+<h1>Firestore testi</h1>
 
-    <input
-      id="searchInput"
-      class="input"
-      type="text"
-      placeholder="Hae nimellä tai salasanalla"
-    />
+<button id="saveBtn">Tallenna testidata</button>
+<button id="loadBtn">Lataa data</button>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Nimi</th>
-          <th>Salasana</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </div>
+<pre id="output"></pre>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <h2>Luo uusi Vieras</h2>
-      <input id="nameInput" class="input" type="text" placeholder="Nimi" />
-      <button class="btn" onclick="generatePassword()">Luo</button>
-      <button class="btn secondary" onclick="closeModal()">Sulje</button>
-    </div>
-  </div>
-
-  <script src="index.js"></script>
+<script type="module" src="firestore.js"></script>
 </body>
 </html>
