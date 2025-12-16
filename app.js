@@ -50,7 +50,7 @@ onSnapshot(collection(db, "tickets"), snapshot => {
 
     const statusTd = document.createElement("td");
     if (data.used) {
-      statusTd.textContent = "Käytetty";
+      statusTd.textContent = "Käytetty!";
       statusTd.className = "used-text";
     } else {
       statusTd.textContent = "Käyttämätön";
