@@ -196,6 +196,14 @@ td.icon:active {
     padding: 0;
   }
 
+  td.used-text {
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+
   td {
     display: table-cell;
     padding: 10px;

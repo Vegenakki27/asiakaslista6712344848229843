@@ -33,24 +33,15 @@ generateBtn.addEventListener("click", async () => {
   nameInput.value = "";
 });
 
-onSnapshot(collection(db, "tickets"), snapshot => {
-  list.innerHTML = "";
+tr.innerHTML = `
+  <td>${data.name}</td>
+  <td>${data.password}</td>
+  <td class="icon ${data.used ? "used-text" : "use"}"
+      data-id="${data.used ? "" : d.id}">
+    ${data.used ? "Käytetty" : "✔"}
+  </td>
+`;
 
-  snapshot.forEach(d => {
-    const data = d.data();
-    const tr = document.createElement("tr");
-    tr.className = data.used ? "used" : "";
-
-    tr.innerHTML = `
-      <td>${data.name}</td>
-      <td>${data.password}</td>
-      <td class="icon use ${data.used ? "disabled" : ""}"
-          data-id="${d.id}">✔</td>
-    `;
-
-    list.appendChild(tr);
-  });
-});
 
 list.addEventListener("click", e => {
   if (!e.target.dataset.id) return;
