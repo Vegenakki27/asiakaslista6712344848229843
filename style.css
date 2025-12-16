@@ -1,70 +1,115 @@
-/* ACTION NAPIT */
-.actions {
-  display: flex;
-  gap: 6px;
+* {
+  box-sizing: border-box;
 }
 
-.actions button {
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  border-radius: 8px;
+/* ===== PERUS ===== */
+body {
+  margin: 0;
+  background: #0b1220;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 16px;
 }
 
-.actions .use {
-  background: #16a34a;
-}
-
-.actions .delete {
-  background: #dc2626;
-}
-
-/* MODAL */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  background: #020617;
-  padding: 20px;
-  border-radius: 14px;
-  max-width: 320px;
-  width: 100%;
+h1 {
   text-align: center;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
 }
 
-.modal-actions {
+/* ===== GENEROINTI ===== */
+.controls {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-top: 16px;
+  margin-bottom: 12px;
 }
 
-.modal-actions button {
-  flex: 1;
+input {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #020617;
+  color: white;
+  font-size: 1rem;
 }
 
-.secondary {
-  background: #334155;
+input::placeholder {
+  color: #94a3b8;
 }
 
-.danger {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-}
-
-td.icon {
-  text-align: center;
+button {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
   cursor: pointer;
-  font-size: 1.2rem;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+#search {
+  margin-bottom: 14px;
+}
+
+/* ===== TAULUKKO (MOBILE) ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #020617;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  display: none;
+}
+
+tr {
+  display: block;
+  border-bottom: 1px solid #1e293b;
+  padding: 12px;
+}
+
+td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 0.95rem;
+}
+
+td::before {
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+td:nth-child(1)::before {
+  content: "Nimi";
+}
+
+td:nth-child(2)::before {
+  content: "Salasana";
+}
+
+td:nth-child(3)::before {
+  content: "Käytä";
+}
+
+td:nth-child(4)::before {
+  content: "Poista";
+}
+
+/* ===== ICON SARAKKEET ===== */
+td.icon {
+  justify-content: flex-end;
+  cursor: pointer;
+  font-size: 1.3rem;
 }
 
 td.icon.use {
@@ -77,4 +122,94 @@ td.icon.delete {
 
 td.icon:active {
   transform: scale(0.9);
+}
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #020617;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  width: 100%;
+}
+
+.secondary {
+  background: #334155;
+}
+
+.danger {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+  body {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .controls {
+    flex-direction: row;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    display: table-row;
+    padding: 0;
+  }
+
+  td {
+    display: table-cell;
+    padding: 10px;
+  }
+
+  td::before {
+    content: none;
+  }
+
+  td.icon {
+    text-align: center;
+  }
+
+  .modal-actions {
+    flex-direction: row;
+  }
 }
