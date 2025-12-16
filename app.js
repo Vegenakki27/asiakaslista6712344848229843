@@ -44,32 +44,26 @@ onSnapshot(collection(db, "tickets"), snapshot => {
 
     tr.innerHTML = `
       <td>${data.name}</td>
-      <td>
-        ${data.password}
-        <div class="actions">
-          <button class="use" data-id="${docSnap.id}">✔</button>
-          <button class="delete" data-id="${docSnap.id}">🗑</button>
-        </div>
-      </td>
+      <td>${data.password}</td>
+      <td class="icon use" data-id="${docSnap.id}">✔</td>
+      <td class="icon delete" data-id="${docSnap.id}">🗑</td>
     `;
 
     list.appendChild(tr);
   });
 });
 
+
 // Klikit (käytä / poista)
 list.addEventListener("click", e => {
-  const id = e.target.dataset.id;
-  if (!id) return;
+  if (!e.target.dataset.id) return;
 
-  if (e.target.classList.contains("use")) {
-    openConfirm(id);
-  }
-
-  if (e.target.classList.contains("delete")) {
-    openConfirm(id);
+  if (e.target.classList.contains("use") ||
+      e.target.classList.contains("delete")) {
+    openConfirm(e.target.dataset.id);
   }
 });
+
 
 // Haku
 search.addEventListener("input", () => {
