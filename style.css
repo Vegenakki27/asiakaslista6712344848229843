@@ -126,6 +126,6 @@ td:nth-child(2)::before {
   }
 
   td, th {
-    padding: 10px;
+    padding: 9px;
   }
 }
