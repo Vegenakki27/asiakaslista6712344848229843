@@ -15,11 +15,13 @@ const generateBtn = document.getElementById("generateBtn");
 
 let activeId = null;
 
+// Salasanan generointi
 function generatePassword() {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
-generateBtn.onclick = async () => {
+// Luo uusi lippu
+generateBtn.addEventListener("click", async () => {
   const name = nameInput.value.trim();
   if (!name) return;
 
@@ -31,41 +33,53 @@ generateBtn.onclick = async () => {
   });
 
   nameInput.value = "";
-};
+});
 
+// Kuuntele Firestorea
 onSnapshot(collection(db, "tickets"), snapshot => {
   list.innerHTML = "";
 
-  snapshot.forEach(d => {
-    const data = d.data();
+  snapshot.forEach(docSnap => {
+    const data = docSnap.data();
+
     const tr = document.createElement("tr");
     if (data.used) tr.classList.add("used");
+
+    const statusCell = document.createElement("td");
+    if (data.used) {
+      statusCell.textContent = "Käytetty";
+      statusCell.className = "used-text";
+    } else {
+      statusCell.textContent = "✔";
+      statusCell.className = "use";
+      statusCell.dataset.id = docSnap.id;
+    }
 
     tr.innerHTML = `
       <td>${data.name}</td>
       <td>${data.password}</td>
-      <td class="${data.used ? "used-text" : "use"}"
-          data-id="${data.used ? "" : d.id}">
-        ${data.used ? "Käytetty" : "✔"}
-      </td>
     `;
 
+    tr.appendChild(statusCell);
     list.appendChild(tr);
   });
 });
 
-list.onclick = e => {
+// Klikki "käytä"
+list.addEventListener("click", e => {
   if (!e.target.dataset.id) return;
+
   activeId = e.target.dataset.id;
   document.getElementById("confirmModal").classList.add("show");
-};
+});
 
-document.getElementById("cancelBtn").onclick = () => {
+// Modal napit
+document.getElementById("cancelBtn").addEventListener("click", () => {
   activeId = null;
   document.getElementById("confirmModal").classList.remove("show");
-};
+});
 
-document.getElementById("confirmBtn").onclick = async () => {
+document.getElementById("confirmBtn").addEventListener("click", async () => {
   if (!activeId) return;
 
   await updateDoc(doc(db, "tickets", activeId), {
@@ -74,13 +88,14 @@ document.getElementById("confirmBtn").onclick = async () => {
 
   activeId = null;
   document.getElementById("confirmModal").classList.remove("show");
-};
+});
 
-search.oninput = () => {
-  const value = search.value.toLowerCase();
+// Haku
+search.addEventListener("input", () => {
+  const term = search.value.toLowerCase();
   [...list.children].forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(value)
+    row.style.display = row.textContent.toLowerCase().includes(term)
       ? ""
       : "none";
   });
-};
+});
