@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hallinta</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VSystem | Kutsut</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
+<h1>VSystem | Kutsut</h1>
+
+<!-- LUO KUTSU -->
+<div class="controls">
+  <div class="input-wrapper">
+    <input id="nameInput" placeholder="Kirjoita nimi" />
+    <button id="generateBtn">Luo</button>
+  </div>
+</div>
+
+<!-- HAKU -->
+<input id="search" placeholder="Hae nimellä tai salasanalla" />
+
+<!-- LISTA -->
+<table>
+  <thead>
+    <tr>
+      <th>Nimi</th>
+      <th>Salasana</th>
+      <th>Käytä</th>
+    </tr>
+  </thead>
+  <tbody id="list"></tbody>
+</table>
+
+<!-- VARMISTUSMODAL -->
 <div id="confirmModal" class="modal">
   <div class="modal-content">
     <h3>Oletko varma?</h3>
@@ -19,37 +46,7 @@
   </div>
 </div>
 
-<body>
-
-<link rel="icon" href="favicon.png" type="image/png">
-
-<h1>VSystem | Kutsut</h1>
-
-<div class="controls">
-  <input type="text" id="nameInput" placeholder="Kirjoita nimi">
-  <button id="generateBtn">Luo kutsu</button>
-</div>
-
-<input type="text" id="search" placeholder="Hae nimellä tai salasanalla">
-
-<table>
-  <thead>
-    <tr>
-      <th>Nimi</th>
-      <th>Salasana</th>
-    </tr>
-  </thead>
-  <tbody id="list"></tbody>
-</table>
-
-
+<!-- AINOA JS -->
 <script type="module" src="app.js"></script>
-
-<script>
-  if (sessionStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
-
 </body>
 </html>
