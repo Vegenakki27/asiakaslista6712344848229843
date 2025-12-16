@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VSystem | Kutsut</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kutsulista</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>VSystem | Kutsut</h1>
+<h1>Kutsulista</h1>
 
-<!-- LUO KUTSU -->
 <div class="controls">
   <div class="input-wrapper">
-    <input id="nameInput" placeholder="Kirjoita nimi" />
+    <input id="nameInput" placeholder="Kirjoita nimi">
     <button id="generateBtn">Luo</button>
   </div>
 </div>
 
-<!-- HAKU -->
-<input id="search" placeholder="Hae nimellä tai salasanalla" />
+<input id="search" placeholder="Hae nimellä tai salasanalla">
 
-<!-- LISTA -->
 <table>
   <thead>
     <tr>
       <th>Nimi</th>
       <th>Salasana</th>
-      <th>Käytä</th>
+      <th>Tila</th>
     </tr>
   </thead>
   <tbody id="list"></tbody>
 </table>
 
-<!-- VARMISTUSMODAL -->
+<!-- MODAL -->
 <div id="confirmModal" class="modal">
   <div class="modal-content">
     <h3>Oletko varma?</h3>
-    <p>Tämän jälkeen lippua ei voi käyttää enää uudestaan!</p>
-
+    <p>Tämän jälkeen lippua ei voi käyttää enää uudestaan.</p>
     <div class="modal-actions">
       <button id="cancelBtn" class="secondary">Peruuta</button>
-      <button id="confirmBtn" class="danger">Kyllä, käytä</button>
+      <button id="confirmBtn" class="danger">Käytä</button>
     </div>
   </div>
 </div>
 
-<!-- AINOA JS -->
 <script type="module" src="app.js"></script>
 </body>
 </html>

@@ -2,62 +2,59 @@
   box-sizing: border-box;
 }
 
-/* ===== PERUS ===== */
 body {
   margin: 0;
+  padding: 16px;
+  font-family: system-ui, sans-serif;
   background: #0b1220;
   color: #e5e7eb;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  padding: 16px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 16px;
-  font-size: 1.6rem;
 }
 
-/* ===== GENEROINTI ===== */
 .controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   margin-bottom: 12px;
 }
 
-input {
-  padding: 14px;
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 70px 14px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #020617;
+  color: white;
+}
+
+.input-wrapper button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#search {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 12px;
   border-radius: 10px;
   border: none;
   background: #020617;
   color: white;
-  font-size: 1rem;
 }
 
-input::placeholder {
-  color: #94a3b8;
-}
-
-button {
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
-  color: white;
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
-#search {
-  margin-bottom: 14px;
-}
-
-/* ===== TAULUKKO (MOBILE) ===== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -72,16 +69,14 @@ thead {
 
 tr {
   display: block;
-  border-bottom: 1px solid #1e293b;
   padding: 12px;
+  border-bottom: 1px solid #1e293b;
 }
 
 td {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 6px 0;
-  font-size: 0.95rem;
 }
 
 td::before {
@@ -89,51 +84,33 @@ td::before {
   color: #94a3b8;
 }
 
-td:nth-child(1)::before {
-  content: "Nimi";
-}
+td:nth-child(1)::before { content: "Nimi"; }
+td:nth-child(2)::before { content: "Salasana"; }
+td:nth-child(3)::before { content: "Tila"; }
 
-td:nth-child(2)::before {
-  content: "Salasana";
-}
-
-td:nth-child(3)::before {
-  content: "Käytä";
-}
-
-td:nth-child(4)::before {
-  content: "Poista";
-}
-
-/* ===== ICON SARAKKEET ===== */
-td.icon {
-  justify-content: flex-end;
-  cursor: pointer;
-  font-size: 1.3rem;
-}
-
-td.icon.use {
+td.use {
   color: #22c55e;
+  cursor: pointer;
 }
 
-td.icon.delete {
-  color: #ef4444;
+td.used-text {
+  color: #94a3b8;
+  font-weight: 600;
 }
 
-td.icon:active {
-  transform: scale(0.9);
+tr.used {
+  opacity: 0.45;
 }
 
-/* ===== MODAL ===== */
+/* MODAL */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0,0,0,0.75);
   backdrop-filter: blur(5px);
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
 }
 
 .modal.show {
@@ -144,24 +121,24 @@ td.icon:active {
   background: #020617;
   padding: 24px;
   border-radius: 16px;
-  max-width: 340px;
-  width: 100%;
   text-align: center;
-}
-
-.modal-content h3 {
-  margin-top: 0;
+  max-width: 320px;
+  width: 100%;
 }
 
 .modal-actions {
+  margin-top: 16px;
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  margin-top: 20px;
 }
 
 .modal-actions button {
-  width: 100%;
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 .secondary {
@@ -169,55 +146,24 @@ td.icon:active {
 }
 
 .danger {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  background: #dc2626;
 }
 
-/* ===== DESKTOP ===== */
+/* DESKTOP */
 @media (min-width: 768px) {
-  body {
-    max-width: 900px;
-    margin: auto;
-  }
-
-  h1 {
-    font-size: 1.9rem;
-  }
-
-  .controls {
-    flex-direction: row;
-  }
-
   thead {
     display: table-header-group;
   }
 
   tr {
     display: table-row;
-    padding: 0;
   }
-
-  td.used-text {
-  color: #94a3b8;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: default;
-}
-
 
   td {
     display: table-cell;
-    padding: 10px;
   }
 
   td::before {
     content: none;
-  }
-
-  td.icon {
-    text-align: center;
-  }
-
-  .modal-actions {
-    flex-direction: row;
   }
 }
