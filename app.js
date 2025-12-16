@@ -15,12 +15,10 @@ const generateBtn = document.getElementById("generateBtn");
 
 let activeId = null;
 
-// Salasanan generointi
 function generatePassword() {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
-// Luo uusi lippu
 generateBtn.addEventListener("click", async () => {
   const name = nameInput.value.trim();
   if (!name) return;
@@ -35,7 +33,6 @@ generateBtn.addEventListener("click", async () => {
   nameInput.value = "";
 });
 
-// Kuuntele Firestorea
 onSnapshot(collection(db, "tickets"), snapshot => {
   list.innerHTML = "";
 
@@ -45,27 +42,30 @@ onSnapshot(collection(db, "tickets"), snapshot => {
     const tr = document.createElement("tr");
     if (data.used) tr.classList.add("used");
 
-    const statusCell = document.createElement("td");
+    const nameTd = document.createElement("td");
+    nameTd.textContent = data.name;
+
+    const passTd = document.createElement("td");
+    passTd.textContent = data.password;
+
+    const statusTd = document.createElement("td");
     if (data.used) {
-      statusCell.textContent = "Käytetty";
-      statusCell.className = "used-text";
+      statusTd.textContent = "Käytetty";
+      statusTd.className = "used-text";
     } else {
-      statusCell.textContent = "✔";
-      statusCell.className = "use";
-      statusCell.dataset.id = docSnap.id;
+      statusTd.textContent = "✔";
+      statusTd.className = "use";
+      statusTd.dataset.id = docSnap.id;
     }
 
-    tr.innerHTML = `
-      <td>${data.name}</td>
-      <td>${data.password}</td>
-    `;
+    tr.appendChild(nameTd);
+    tr.appendChild(passTd);
+    tr.appendChild(statusTd);
 
-    tr.appendChild(statusCell);
     list.appendChild(tr);
   });
 });
 
-// Klikki "käytä"
 list.addEventListener("click", e => {
   if (!e.target.dataset.id) return;
 
@@ -73,7 +73,6 @@ list.addEventListener("click", e => {
   document.getElementById("confirmModal").classList.add("show");
 });
 
-// Modal napit
 document.getElementById("cancelBtn").addEventListener("click", () => {
   activeId = null;
   document.getElementById("confirmModal").classList.remove("show");
@@ -90,11 +89,10 @@ document.getElementById("confirmBtn").addEventListener("click", async () => {
   document.getElementById("confirmModal").classList.remove("show");
 });
 
-// Haku
 search.addEventListener("input", () => {
-  const term = search.value.toLowerCase();
+  const value = search.value.toLowerCase();
   [...list.children].forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(term)
+    row.style.display = row.textContent.toLowerCase().includes(value)
       ? ""
       : "none";
   });
