@@ -50,10 +50,10 @@ onSnapshot(collection(db, "tickets"), snapshot => {
 
     const statusTd = document.createElement("td");
     if (data.used) {
-      statusTd.textContent = "Käytetty";
+      statusTd.textContent = "Käytä";
       statusTd.className = "used-text";
     } else {
-      statusTd.textContent = "✔";
+      statusTd.textContent = "Käyttämätön";
       statusTd.className = "use";
       statusTd.dataset.id = docSnap.id;
     }
