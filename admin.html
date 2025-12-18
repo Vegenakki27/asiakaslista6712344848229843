@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN OVERLAY -->
+<div id="loginOverlay" class="modal show">
+  <div class="modal-content">
+    <h3>Admin</h3>
+    <input id="adminPass" type="password" placeholder="Salasana">
+    <button id="loginBtn">Kirjaudu</button>
+  </div>
+</div>
+
+<h1>Admin-paneeli</h1>
+
+<div class="input-wrapper">
+  <input id="nameInput" placeholder="Nimi">
+  <button id="createBtn">Luo</button>
+</div>
+
+<h3>Luontiloki</h3>
+<div id="log"></div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>

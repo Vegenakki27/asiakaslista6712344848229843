@@ -167,3 +167,104 @@ tr.used {
     content: none;
   }
 }
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: #0b1220;
+  color: #e5e7eb;
+  font-family: system-ui, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-btn {
+  background: #334155;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+input, button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: auto;
+  padding: 8px 12px;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  background: #020617;
+  margin-bottom: 10px;
+  display: block;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.use {
+  color: #22c55e;
+  cursor: pointer;
+}
+
+.used {
+  opacity: 0.4;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #020617;
+  padding: 20px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+
+#log div {
+  background: #020617;
+  padding: 10px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}

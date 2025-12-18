@@ -3,42 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kutsulista</title>
+  <title>Portsari</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Kutsulista</h1>
-
-<div class="controls">
-  <div class="input-wrapper">
-    <input id="nameInput" placeholder="Kirjoita nimi">
-    <button id="generateBtn">Luo</button>
-  </div>
-</div>
+<header>
+  <h1>Portsari</h1>
+  <a href="admin.html" class="admin-btn">Admin</a>
+</header>
 
 <input id="search" placeholder="Hae nimellä tai salasanalla">
 
 <table>
-  <thead>
-    <tr>
-      <th>Nimi</th>
-      <th>Salasana</th>
-      <th>Tila</th>
-    </tr>
-  </thead>
   <tbody id="list"></tbody>
 </table>
 
 <!-- MODAL -->
 <div id="confirmModal" class="modal">
   <div class="modal-content">
-    <h3>Oletko varma?</h3>
-    <p>Tämän jälkeen lippua ei voi käyttää enää uudestaan.</p>
-    <div class="modal-actions">
-      <button id="cancelBtn" class="secondary">Peruuta</button>
-      <button id="confirmBtn" class="danger">Käytä</button>
-    </div>
+    <h3>Käytä lippu?</h3>
+    <p>Tämän jälkeen lippua ei voi käyttää uudestaan.</p>
+    <button id="confirmBtn" class="danger">Käytä</button>
+    <button id="cancelBtn" class="secondary">Peruuta</button>
   </div>
 </div>
 
