@@ -13,22 +13,34 @@
   <a href="admin.html" class="admin-btn">Admin</a>
 </header>
 
-<input id="search" placeholder="Hae nimellä tai salasanalla">
+<!-- HAKU -->
+<input
+  type="text"
+  id="search"
+  placeholder="Hae nimellä tai salasanalla"
+  autocomplete="off"
+/>
 
+<!-- LISTA -->
 <table>
   <tbody id="list"></tbody>
 </table>
 
-<!-- MODAL -->
+<!-- VAHVISTUSMODAL -->
 <div id="confirmModal" class="modal">
   <div class="modal-content">
-    <h3>Käytä lippu?</h3>
-    <p>Tämän jälkeen lippua ei voi käyttää uudestaan.</p>
-    <button id="confirmBtn" class="danger">Käytä</button>
-    <button id="cancelBtn" class="secondary">Peruuta</button>
+    <h3>Oletko varma?</h3>
+    <p>Tämän jälkeen lippua ei voi käyttää enää uudestaan.</p>
+
+    <div class="modal-actions">
+      <button id="confirmBtn" class="danger">Käytä</button>
+      <button id="cancelBtn" class="secondary">Peruuta</button>
+    </div>
   </div>
 </div>
 
+<!-- JS -->
 <script type="module" src="app.js"></script>
+
 </body>
 </html>
