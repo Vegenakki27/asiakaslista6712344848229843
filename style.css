@@ -214,3 +214,12 @@ tr.used {
     content: none;
   }
 }
+.admin-content.locked {
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+.admin-content.unlocked {
+  pointer-events: auto;
+  filter: none;
+}

@@ -12,20 +12,30 @@
 <div id="loginOverlay" class="modal show">
   <div class="modal-content">
     <h3>Admin</h3>
-    <input id="adminPass" type="password" placeholder="Salasana">
+    <input
+      id="adminPass"
+      type="password"
+      placeholder="Salasana"
+      autocomplete="off"
+    >
     <button id="loginBtn">Kirjaudu</button>
   </div>
 </div>
 
-<h1>Admin-paneeli</h1>
+<!-- ADMIN SISÄLTÖ (LUKITTU) -->
+<div class="admin-content locked">
 
-<div class="input-wrapper">
-  <input id="nameInput" placeholder="Nimi">
-  <button id="createBtn">Luo</button>
+  <h1>Admin-paneeli</h1>
+
+  <div class="input-wrapper">
+    <input id="nameInput" placeholder="Nimi">
+    <button id="createBtn">Luo</button>
+  </div>
+
+  <h3>Luontiloki</h3>
+  <div id="log"></div>
+
 </div>
-
-<h3>Luontiloki</h3>
-<div id="log"></div>
 
 <script type="module" src="admin.js"></script>
 </body>

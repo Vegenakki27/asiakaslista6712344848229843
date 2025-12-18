@@ -7,11 +7,17 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 // Login
+const overlay = document.getElementById("loginOverlay");
+const content = document.querySelector(".admin-content");
+
 document.getElementById("loginBtn").onclick = () => {
   if (document.getElementById("adminPass").value === "1234") {
-    document.getElementById("loginOverlay").classList.remove("show");
+    overlay.classList.remove("show");
+    content.classList.remove("locked");
+    content.classList.add("unlocked");
   }
 };
+
 
 // Luo lippu
 document.getElementById("createBtn").onclick = async () => {
