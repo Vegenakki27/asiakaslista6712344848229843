@@ -10,6 +10,8 @@ import {
 const overlay = document.getElementById("loginOverlay");
 const content = document.querySelector(".admin-content");
 
+content.classList.add("locked");
+
 document.getElementById("loginBtn").onclick = () => {
   if (document.getElementById("adminPass").value === "1234") {
     overlay.classList.remove("show");

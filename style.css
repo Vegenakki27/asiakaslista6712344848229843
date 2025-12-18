@@ -214,12 +214,59 @@ tr.used {
     content: none;
   }
 }
+
+/* ---------- ADMIN LOCK ---------- */
+
+.admin-content {
+  transition: filter 0.3s ease;
+}
+
 .admin-content.locked {
+  filter: blur(6px);
   pointer-events: none;
-  filter: blur(4px);
+  user-select: none;
 }
 
 .admin-content.unlocked {
-  pointer-events: auto;
   filter: none;
+  pointer-events: auto;
+}
+
+/* ---------- LOGIN MODAL (OVERRIDE) ---------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* TÄRKEÄ */
+  pointer-events: auto;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal * {
+  pointer-events: auto;
+}
+
+.admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.admin-btn:active {
+  transform: scale(0.95);
 }
