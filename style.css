@@ -2,10 +2,12 @@
   box-sizing: border-box;
 }
 
+/* ---------- BASE ---------- */
+
 body {
   margin: 0;
   padding: 16px;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: #0b1220;
   color: #e5e7eb;
 }
@@ -26,31 +28,50 @@ header {
   margin-bottom: 14px;
 }
 
+/* ---------- ADMIN BUTTON ---------- */
+
 .admin-btn {
-  background: #334155;
-  padding: 8px 12px;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  padding: 10px 14px;
+  border-radius: 999px;
   color: white;
   text-decoration: none;
   font-weight: 600;
+  font-size: 16px; /* TÄRKEÄ */
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* ---------- INPUT + BUTTON ---------- */
+.admin-btn:active {
+  transform: scale(0.95);
+}
+
+/* ---------- INPUTS (NO ZOOM FIX) ---------- */
+
+input,
+button {
+  font-size: 16px;               /* ESTÄÄ MOBIILI ZOOMIN */
+  -webkit-text-size-adjust: 100%;
+}
 
 input {
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   background: #020617;
   color: white;
   margin-bottom: 12px;
 }
 
+/* ---------- BUTTON ---------- */
+
 button {
   border: none;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
   font-weight: 600;
   cursor: pointer;
   background: #2563eb;
@@ -61,25 +82,29 @@ button:active {
   transform: scale(0.97);
 }
 
-/* ---------- INPUT WITH BUTTON (LUO) ---------- */
+/* ---------- INPUT + BUTTON ROW ---------- */
 
 .input-wrapper {
-  position: relative;
-  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #020617;
+  border-radius: 16px;
+  padding: 6px;
+  margin-bottom: 16px;
 }
 
 .input-wrapper input {
-  padding-right: 80px;
+  flex: 1;
+  background: transparent;
+  margin: 0;
+  padding: 12px;
 }
 
 .input-wrapper button {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: #2563eb;
+  padding: 10px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
 }
 
 /* ---------- SEARCH ---------- */
@@ -88,7 +113,7 @@ button:active {
   margin-bottom: 16px;
 }
 
-/* ---------- TABLE / LIST ---------- */
+/* ---------- LIST / TABLE ---------- */
 
 table {
   width: 100%;
@@ -101,7 +126,7 @@ thead {
 
 tr {
   background: #020617;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 12px;
   margin-bottom: 10px;
   display: block;
@@ -142,12 +167,12 @@ tr.used {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .modal.show {
@@ -157,7 +182,7 @@ tr.used {
 .modal-content {
   background: #020617;
   padding: 24px;
-  border-radius: 18px;
+  border-radius: 20px;
   width: 100%;
   max-width: 320px;
   text-align: center;
@@ -183,14 +208,48 @@ tr.used {
   background: #dc2626;
 }
 
+/* ---------- ADMIN LOCK ---------- */
+
+.admin-content {
+  transition: filter 0.3s ease;
+}
+
+.admin-content.locked {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.admin-content.unlocked {
+  filter: none;
+  pointer-events: auto;
+}
+
 /* ---------- ADMIN LOG ---------- */
 
 #log div {
   background: #020617;
   padding: 10px;
   margin-bottom: 6px;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* ---------- BACK BUTTON ---------- */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  color: #c7d2fe;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.back-btn:active {
+  opacity: 0.7;
 }
 
 /* ---------- DESKTOP ---------- */
@@ -213,98 +272,4 @@ tr.used {
   td::before {
     content: none;
   }
-}
-
-/* ---------- ADMIN LOCK ---------- */
-
-.admin-content {
-  transition: filter 0.3s ease;
-}
-
-.admin-content.locked {
-  filter: blur(6px);
-  pointer-events: none;
-  user-select: none;
-}
-
-.admin-content.unlocked {
-  filter: none;
-  pointer-events: auto;
-}
-
-/* ---------- LOGIN MODAL (OVERRIDE) ---------- */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999; /* TÄRKEÄ */
-  pointer-events: auto;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal * {
-  pointer-events: auto;
-}
-
-.admin-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  padding: 10px 14px;
-  border-radius: 999px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-}
-
-.admin-btn:active {
-  transform: scale(0.95);
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #020617;
-  border-radius: 14px;
-  padding: 6px;
-  margin-bottom: 16px;
-}
-
-.input-wrapper input {
-  flex: 1;
-  background: transparent;
-  margin: 0;
-}
-
-.input-wrapper button {
-  padding: 10px 16px;
-  border-radius: 10px;
-  background: #2563eb;
-  white-space: nowrap;
-}
-
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 14px;
-  color: #c7d2fe;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.back-btn:active {
-  opacity: 0.7;
 }
