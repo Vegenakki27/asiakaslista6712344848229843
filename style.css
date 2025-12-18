@@ -10,25 +10,66 @@ body {
   color: #e5e7eb;
 }
 
-h1 {
-  text-align: center;
-}
+/* ---------- TYPO ---------- */
 
-.controls {
+h1, h3 {
+  text-align: center;
   margin-bottom: 12px;
 }
 
-.input-wrapper {
-  position: relative;
+/* ---------- HEADER ---------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
-.input-wrapper input {
+.admin-btn {
+  background: #334155;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ---------- INPUT + BUTTON ---------- */
+
+input {
   width: 100%;
-  padding: 14px 70px 14px 14px;
+  padding: 14px;
   border-radius: 12px;
   border: none;
   background: #020617;
   color: white;
+  margin-bottom: 12px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ---------- INPUT WITH BUTTON (LUO) ---------- */
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.input-wrapper input {
+  padding-right: 80px;
 }
 
 .input-wrapper button {
@@ -38,29 +79,20 @@ h1 {
   transform: translateY(-50%);
   padding: 8px 14px;
   border-radius: 8px;
-  border: none;
   background: #2563eb;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
 }
 
+/* ---------- SEARCH ---------- */
+
 #search {
-  width: 100%;
-  margin-bottom: 14px;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  background: #020617;
-  color: white;
+  margin-bottom: 16px;
 }
+
+/* ---------- TABLE / LIST ---------- */
 
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #020617;
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 thead {
@@ -68,9 +100,11 @@ thead {
 }
 
 tr {
-  display: block;
+  background: #020617;
+  border-radius: 14px;
   padding: 12px;
-  border-bottom: 1px solid #1e293b;
+  margin-bottom: 10px;
+  display: block;
 }
 
 td {
@@ -88,12 +122,13 @@ td:nth-child(1)::before { content: "Nimi"; }
 td:nth-child(2)::before { content: "Salasana"; }
 td:nth-child(3)::before { content: "Tila"; }
 
-td.use {
+.use {
   color: #22c55e;
+  font-weight: 600;
   cursor: pointer;
 }
 
-td.used-text {
+.used-text {
   color: #94a3b8;
   font-weight: 600;
 }
@@ -102,15 +137,17 @@ tr.used {
   opacity: 0.45;
 }
 
-/* MODAL */
+/* ---------- MODAL ---------- */
+
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
   display: none;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
 
 .modal.show {
@@ -120,10 +157,10 @@ tr.used {
 .modal-content {
   background: #020617;
   padding: 24px;
-  border-radius: 16px;
-  text-align: center;
-  max-width: 320px;
+  border-radius: 18px;
   width: 100%;
+  max-width: 320px;
+  text-align: center;
 }
 
 .modal-actions {
@@ -134,12 +171,9 @@ tr.used {
 
 .modal-actions button {
   flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  cursor: pointer;
 }
+
+/* ---------- BUTTON VARIANTS ---------- */
 
 .secondary {
   background: #334155;
@@ -149,7 +183,18 @@ tr.used {
   background: #dc2626;
 }
 
-/* DESKTOP */
+/* ---------- ADMIN LOG ---------- */
+
+#log div {
+  background: #020617;
+  padding: 10px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* ---------- DESKTOP ---------- */
+
 @media (min-width: 768px) {
   thead {
     display: table-header-group;
@@ -157,6 +202,8 @@ tr.used {
 
   tr {
     display: table-row;
+    margin: 0;
+    border-radius: 0;
   }
 
   td {
@@ -166,105 +213,4 @@ tr.used {
   td::before {
     content: none;
   }
-}
-
-body {
-  margin: 0;
-  padding: 16px;
-  background: #0b1220;
-  color: #e5e7eb;
-  font-family: system-ui, sans-serif;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.admin-btn {
-  background: #334155;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-}
-
-input, button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 10px;
-}
-
-button {
-  background: #2563eb;
-  color: white;
-  font-weight: 600;
-}
-
-.input-wrapper {
-  position: relative;
-}
-
-.input-wrapper button {
-  position: absolute;
-  right: 6px;
-  top: 6px;
-  width: auto;
-  padding: 8px 12px;
-}
-
-table {
-  width: 100%;
-}
-
-tr {
-  background: #020617;
-  margin-bottom: 10px;
-  display: block;
-  padding: 12px;
-  border-radius: 12px;
-}
-
-.use {
-  color: #22c55e;
-  cursor: pointer;
-}
-
-.used {
-  opacity: 0.4;
-}
-
-/* MODAL */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  background: #020617;
-  padding: 20px;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 320px;
-  text-align: center;
-}
-
-#log div {
-  background: #020617;
-  padding: 10px;
-  margin-bottom: 6px;
-  border-radius: 8px;
-  font-size: 0.9rem;
 }
