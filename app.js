@@ -19,8 +19,8 @@ onSnapshot(collection(db, "tickets"), snap => {
     if (data.used) tr.classList.add("used");
 
     tr.innerHTML = `
-      <div>${data.name}</div>
-      <div>${data.password}</div>
+      <div>${data.name}Nimi:</div>
+      <div>${data.password}Salasana:</div>
       <div class="use" data-id="${data.used ? "" : d.id}">
         ${data.used ? "Käytetty" : "✔ Käytä"}
       </div>
